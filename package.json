@@ -2,7 +2,9 @@
   "name": "fontr",
   "version": "0.0.1",
   "description": "",
+  "preferGlobal": "true",
   "main": "index.js",
+  "bin": "./bin/fontr.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

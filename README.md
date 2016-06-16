@@ -10,15 +10,18 @@ npm install -g fontr
 
 ## How fontr works?
 
-Create a `fontr.yml` file where contains a font list:
+Create a `fontr.json` file where contains a font list:
 
-```yml
-fontr:
-    fonts:
-        - open-sans
-        - helvetica-neue
+```json
 
-    path: "fonts" # fonts folder is default
+{
+    "fonts": [
+        "open-sans",
+        "helvetica-neue"
+    ],
+    "path": "fonts"
+}
+
 ```
 
 Then run:
