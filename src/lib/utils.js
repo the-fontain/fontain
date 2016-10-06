@@ -17,6 +17,5 @@ exports.verify = function(args) {
 };
 
 exports.throwError = function(err) {
-    throw Error(err);
-    console.log(colors('error', 'Fountain: ' + err ));
+    console.log(colors('error', 'Fontain Error: ' + err ));
 }
