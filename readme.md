@@ -2,17 +2,27 @@
 
 > Easy Font Management
 
-Install fountain globally:
+## Getting Started
 
+With [node](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed, install fountain with a single command.
+
+##### As CLI
+
+```sh
+$ npm install -g fountain
 ```
-npm i -g fountain
+
+##### As Node Module
+
+```sh
+$ npm install fountain
 ```
 
 Create a `font.json` file:
 
 Advanced Options
 
-```
+```json
 "fonts": {
    "config": {
      "charset": "full",
@@ -26,6 +36,6 @@ Advanced Options
 
 Simplest Options
 
-```
+```json
 "fonts": ["open-sans", "lato", "roboto"]
 ```

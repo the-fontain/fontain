@@ -2,10 +2,12 @@
   "name": "fountain",
   "version": "0.0.1",
   "description": "",
+  "bin": "./bin/fountain.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require assert --recursive --growl"
   },
+  "readmeFilename": "readme.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/the-fountain/fountain.git"
@@ -18,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/the-fountain/fountain/issues"
   },
-  "homepage": "https://github.com/the-fountain/fountain#readme"
+  "homepage": "https://github.com/the-fountain/fountain#readme",
+  "dependencies": {
+    "char-spinner": "^1.0.1",
+    "supports-color": "^1.3.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.1"
+  }
 }
