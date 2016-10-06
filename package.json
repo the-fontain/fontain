@@ -1,5 +1,5 @@
 {
-  "name": "handa",
+  "name": "fountain",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fontr/fontr.git"
+    "url": "git+https://github.com/the-fountain/fountain.git"
   },
   "keywords": [
     "font"
@@ -16,7 +16,7 @@
   "author": "Raphael Amorim",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fontr/fontr/issues"
+    "url": "https://github.com/the-fountain/fountain/issues"
   },
-  "homepage": "https://github.com/fontr/fontr#readme"
+  "homepage": "https://github.com/the-fountain/fountain#readme"
 }
