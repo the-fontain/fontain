@@ -1,1 +1,1 @@
-module.exports = require('./src/fountain.js');
+module.exports = require('./src/fontain.js');

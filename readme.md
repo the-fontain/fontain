@@ -1,21 +1,21 @@
-# Fountain
+# Fontain
 
 > Easy Font Management
 
 ## Getting Started
 
-With [node](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed, install fountain with a single command.
+With [node](http://nodejs.org/) and [npm](https://www.npmjs.org/) installed, install fontain with a single command.
 
 ##### As CLI
 
 ```sh
-$ npm install -g fountain
+$ npm install -g fontain
 ```
 
 ##### As Node Module
 
 ```sh
-$ npm install fountain
+$ npm install fontain
 ```
 
 Create a `font.json` file:

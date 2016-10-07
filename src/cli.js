@@ -1,4 +1,4 @@
-var Fountain = require('./fountain'),
+var Fountain = require('./fontain'),
     verify = require('./lib/utils').verify,
     commands = process.argv;
 

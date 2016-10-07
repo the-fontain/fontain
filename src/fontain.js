@@ -19,20 +19,20 @@ const packageJson = require('../package.json'),
     utils = require('./lib/utils'),
     spinner = require('char-spinner');
 
-let Fountain = new Function();
+let Fontain = new Function();
 
-Fountain.prototype.default = function() {
+Fontain.prototype.default = function() {
     return ('Hey young padawan, please type a valid command.\n' +
-        colors('message', '>> See more: https://github.com/the-fountain/fountain'));
+        colors('message', '>> See more: https://github.com/the-fontain/fontain'));
 };
 
-Fountain.prototype.version = function() {
+Fontain.prototype.version = function() {
     return (
-        colors('success', 'Fountain version: ' + packageJson.version)
+        colors('success', 'Fontain version: ' + packageJson.version)
     );
 };
 
-Fountain.prototype.fetchUrl = function(cssFile) {
+Fontain.prototype.fetchUrl = function(cssFile) {
     return new Promise(function(resolve, reject) {
         fetch(cssFile, function(err, meta, body) {
             if (err) throw err;
@@ -45,7 +45,7 @@ Fountain.prototype.fetchUrl = function(cssFile) {
     });
 }
 
-Fountain.prototype.fetchFonts = function(fonts) {
+Fontain.prototype.fetchFonts = function(fonts) {
     let self = this;
     console.log('Fonts to download:', colors('message', fonts.join(', ')));
     let googleFonts = 'https://fonts.googleapis.com/css?family=';
@@ -84,7 +84,7 @@ Fountain.prototype.fetchFonts = function(fonts) {
     })
 }
 
-Fountain.prototype.install = function() {
+Fontain.prototype.install = function() {
     let configFile = path + '/fonts.json';
 
     if (!fs.existsSync(configFile)) {
@@ -100,4 +100,4 @@ Fountain.prototype.install = function() {
     spinner();
 };
 
-module.exports = new Fountain();
+module.exports = new Fontain();
