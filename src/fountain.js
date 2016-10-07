@@ -51,21 +51,37 @@ Fountain.prototype.fetchFonts = function(fonts) {
     let googleFonts = 'https://fonts.googleapis.com/css?family=';
 
     return Promises.map(fonts, function(font) {
-        font = changeCase.titleCase(font);
-        font = googleFonts + font.replace(/\s/g, "+");
-        console.log(font);
+        let fontName = changeCase.titleCase(font);
+        fontName = fontName.replace(/\s/g, "+")
+        font = googleFonts + fontName.replace(/\s/g, "+");
         return request.getAsync({
                 url: font,
                 timeout: 3000,
                 headers: {
-                    'User-Agent': 'Firefox 36.0 Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0',
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 }
             })
             .spread(function(response, body) {
-                console.log(body);
+                let cssom = css.parse(body, {silent: false});
+                let declarations = cssom.stylesheet.rules[0].declarations;
+                let src = declarations.filter(function(item){
+                    return (item.property === 'src');
+                })[0].value;
+                let url = src.match(/(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g) || [];
+                console.log(colors('success', '[Downloaded]'), fontName);
+                return request.get({
+                    url: url[0],
+                    timeout: 100000,
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0',
+                        'Content-Type' : 'application/x-www-form-urlencoded'
+                    }
+                }).pipe(fs.createWriteStream(fontsFolder + '/' + fontName + '.woff'))
             })
-    });
+    }).then(function(){
+        process.exit();
+    })
 }
 
 Fountain.prototype.install = function() {
