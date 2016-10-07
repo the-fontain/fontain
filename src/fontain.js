@@ -7,13 +7,6 @@ const fs = require('fs'),
     request = Promises.promisifyAll(require('request')),
     css = require('css');
 
-var readline = require('readline');
-
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
 const packageJson = require('../package.json'),
     colors = require('./lib/colors'),
     utils = require('./lib/utils'),
@@ -69,18 +62,15 @@ Fontain.prototype.fetchFonts = function(fonts) {
                     return (item.property === 'src');
                 })[0].value;
                 let url = src.match(/(((ftp|https?):\/\/)[\-\w@:%_\+.~#?,&\/\/=]+)|((mailto:)?[_.\w-]+@([\w][\w\-]+\.)+[a-zA-Z]{2,3})/g) || [];
-                console.log(colors('success', '[Downloaded]'), fontName);
-                return request.get({
-                    url: url[0],
-                    timeout: 100000,
-                    headers: {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0',
-                        'Content-Type' : 'application/x-www-form-urlencoded'
-                    }
-                }).pipe(fs.createWriteStream(fontsFolder + '/' + fontName + '.woff'))
+                return request.getAsync(url[0]).spread(function(res, b) {
+                    let fontPath = fontsFolder + '/' + fontName + '.woff';
+                    let stream = fs.createWriteStream(fontPath);
+                    stream.write(b);
+                    stream.end();
+                }).then(function() {
+                    console.log(colors('success', '[Downloaded]'), fontName);
+                })
             })
-    }).then(function(){
-        process.exit();
     })
 }
 
